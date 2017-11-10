@@ -1,0 +1,7 @@
+# Works with: UNIX Shell
+$ groovysh -q "println 'Hello'"
+Hello
+
+# Works with: Windows Command Interpreter
+C:\Users\user> groovysh -q "println 'Hello'"
+Hello
