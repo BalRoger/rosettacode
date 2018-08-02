@@ -13,10 +13,10 @@ list.unique()
 assert list.size() == 8
 println "   Original List, filtered: ${list}"
 
+// Converting to Set
 def list3 = [1, 2, 3, 'a', 'b', 'c', 2, 3, 4, 'b', 'c', 'd']
 assert list3.size() == 12
 
-// Converting to Set
-def set = list as Set
+def set = list3 as Set
 assert set.size() == 8
 println "                       Set: ${set}"

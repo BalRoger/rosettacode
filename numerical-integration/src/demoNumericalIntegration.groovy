@@ -132,9 +132,9 @@ println ()
 //f(x) = x**3, where x is [0,1], with 100 approximations. The exact result is 1/4, or 0.25.
 //[ LeftRect:0.24502500000000002]
 //[RightRect:0.255025]
-//[  MidRect:0.24998750000000008]
+//[  MidRect:0.24998750000000006]
 //[Trapezoid:0.250025]
-//[ Simpsons:0.25000000000000006]
+//[ Simpsons:0.25]
 //
 //f(x) = 1/x, where x is [1, 100], with 1,000 approximations. The exact result is the natural log of 100, or about 4.605170.
 //[ LeftRect:4.65499105751468]

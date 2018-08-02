@@ -50,9 +50,9 @@ def test = { crossProduct ->
     def b = [4, 3, 5]
     def c = [-5, -12, -13]
 
-    println("      a . b = " + dotProduct(a,b))
+    println("      a • b = " + dotProduct(a,b))
     println("      a x b = " + crossProduct(a,b))
-    println("a . (b x c) = " + scalarTripleProduct(a,b,c))
+    println("a • (b x c) = " + scalarTripleProduct(a,b,c))
     println("a x (b x c) = " + vectorTripleProduct(a,b,c))
     println()
 }

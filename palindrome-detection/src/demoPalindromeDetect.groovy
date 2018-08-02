@@ -13,15 +13,14 @@ def isPalindromeI = { String s ->
 
 // // Recursive
 // Solution follows the C palindrome_r recursive solution:
-def isPalindromeR
-isPalindromeR = { String s ->
+def isPalindromeR = { String s ->
     def n = s.size()
-    n < 2 || (s[0] == s[n-1] && isPalindrome(s[1..<(n-1)]))
+    n < 2 || (s[0] == s[n-1] && call(s[1..<(n-1)]))
 }
 
 // Test program:
-[Trivial:isPalindromeT, Nonrecursive:isPalindromeI, Recursive:isPalindromeR].each { k,isPalendrome ->
-    println "$k Solution:\n"
+[Trivial:isPalindromeT, Nonrecursive:isPalindromeI, Recursive:isPalindromeR].each { k, isPalindrome ->
+    println "\n$k Solution:"
     
     println isPalindrome("")
     println isPalindrome("a")

@@ -44,20 +44,31 @@ println "a ** b == (${a}) ** (${b}) == " + (a ** b)
 println 'a.real == ' + a.real
 println 'a.imag == ' + a.imag
 println '|a| == ' + a.abs
+println '|a| == ' + abs(a)
 println 'a.rho == ' + a.rho
 println 'a.ρ == ' + a.ρ
+println 'arg a == ' + a.arg
+println 'arg a == ' + arg(a)
 println 'a.theta == ' + a.theta
 println 'a.θ == ' + a.θ
-println '~a (conjugate) == ' + ~a
+println 'conjugate a == ' + a.conjugate
+println 'conjugate a == ' + conjugate(a)
+println '~a == ' + ~a
 
 def ρ = 10
 def π = Math.PI
 def n = 3
 def θ = π / n
 
-def fromPolar1 = fromPolar(ρ, θ)    // direct polar-to-cartesian conversion
-def fromPolar2 = exp(θ.i) * ρ       // Euler's equation
-println "ρ*cos(θ) + i*ρ*sin(θ) == ${ρ}*cos(π/${n}) + i*${ρ}*sin(π/${n})"
+def fromPolar1 = ρ.cis(θ)           // direct polar-to-cartesian conversion, fluent "operator"
+def fromPolar2 = ρ.∠(θ)             // direct polar-to-cartesian conversion, fluent "operator"
+def fromPolar3 = fromPolar(ρ, θ)    // direct polar-to-cartesian conversion
+def fromPolar4 = exp(θ.i) * ρ       // Euler's equation
+println "ρ cis θ               == ${ρ}*cos(π/${n}) + i*${ρ}*sin(π/${n})"
 println "                      == 10*0.5      + i*10*√(3/4)    == " + fromPolar1
-println "ρ*exp(i*θ)            == ${ρ}*exp(i*π/${n})                == " + fromPolar2
-assert (fromPolar1 - fromPolar2).abs < ε
+println "ρ ∠ θ                 == ${ρ}*cos(π/${n}) + i*${ρ}*sin(π/${n})"
+println "                      == 10*0.5      + i*10*√(3/4)    == " + fromPolar2
+println "ρ*cos(θ) + i*ρ*sin(θ) == ${ρ}*cos(π/${n}) + i*${ρ}*sin(π/${n})"
+println "                      == 10*0.5      + i*10*√(3/4)    == " + fromPolar3
+println "ρ*exp(i*θ)            == ${ρ}*exp(i*π/${n})                == " + fromPolar4
+assert (fromPolar1 - fromPolar4).abs < ε
