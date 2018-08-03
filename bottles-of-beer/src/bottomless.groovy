@@ -1,5 +1,9 @@
 def bottles = { "${it==0 ? 'No more' : it} bottle${it==1 ? '' : 's' }" }
  
+def resultShort = { "${bottles(it)} of beer" }
+ 
+def result = { "${resultShort(it)} on the wall" }
+ 
 def initialState = {
   """${result(it)}
 ${resultShort(it)}"""
@@ -12,10 +16,6 @@ def act = {
 }
  
 def delta = { it > 0 ? -1 : 99 }
- 
-def resultShort = { "${bottles(it)} of beer" }
- 
-def result = { "${resultShort(it)} on the wall" }
  
 // //// uncomment commented lines to create endless drunken binge //// //
 // while (true) {

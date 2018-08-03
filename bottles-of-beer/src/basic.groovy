@@ -1,4 +1,4 @@
-def bottles = { "${it==0 ? 'No more' : it} bottle${it==1 ? '' : 's' }" }
+def bottles = { "${it==0 ? 'No more' : it} bottle${ it-1 ? 's' : '' }" }
  
 99.downto(1) { i ->
     print """

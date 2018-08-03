@@ -1,5 +1,5 @@
 // Solution
-def compose = { f, g -> { x -> f(g(x)) } }
+def compose = { f, g -> f << g }
 
 //Test program:
 def cube = { it * it * it }

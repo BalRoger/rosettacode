@@ -1,7 +1,6 @@
-def recurse;
-recurse = {
+def recurse = {
     try {
-        recurse (it + 1)
+        call(it + 1)
     } catch (StackOverflowError e) {
         return it
     }

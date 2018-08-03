@@ -1,14 +1,14 @@
 // via Relational Operators
 
 def comparisonRelational = { a, b ->
-    println "a ? b    = ${a} ? ${b}    = a ${a < b ? '<' : a > b ? '>' : a == b ? '==' : '?'} b"
+    println "a ? b    = ${a.toString().padLeft(7)} ? ${b.toString().padLeft(7)} = a ${a < b ? '<' : a > b ? '>' : a == b ? '==' : '?'} b"
 }
 
 // via "Spaceship" (compareTo) Operator
 
 final rels = [ (-1) : '<', 0 : '==', 1 : '>' ].asImmutable()
 def comparisonSpaceship = { a, b ->
-    println "a ? b    = ${a} ? ${b}    = a ${rels[a <=> b]} b"
+    println "a ? b    = ${a.toString().padLeft(7)} ? ${b.toString().padLeft(7)} = a ${rels[a <=> b]} b"
 }
 
 [Relational:comparisonRelational, Spaceship:comparisonSpaceship].each { name, comparison ->

@@ -1,11 +1,10 @@
 // Solution:
-def comb
-comb = { m, list ->
+def comb = { m, list ->
     def n = list.size()
     m == 0
         ? [[]]
         : (0..(n-m)).inject([]) { newlist, k ->
-            newlist += comb(m-1, list[(k+1)..<n]).collect { [list[k]] + it }
+            newlist += call(m-1, list[(k+1)..<n]).collect { [list[k]] + it }
         }
 }
 

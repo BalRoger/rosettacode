@@ -2,8 +2,9 @@
 def string = 'Able was I'
 
 // There is a double quote (quotation mark(")) delimited syntax in Groovy, but it represents an
-// expression construct called a GString (I know, I know). Inside of a GString, sub-expression
-// substitution of the form ${subexpression} may take place. Thus the following results:
+// interpolated string expression construct called a GString (I know, I know). Inside of a GString,
+// sub-expression substitution of the form ${subexpression} may take place. Thus the following
+// results:
 def gString = "${string} ere I saw Elba"
  
 println gString
