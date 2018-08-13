@@ -1,0 +1,39 @@
+All the Java solutions work equally well under Groovy when the program is invoked through the
+"main" method of a class. However, if a Groovy program is invoked as a script, the script runs as
+an instance method of itself as the instantiating class. If the script is running as a compiled
+string, the Groovy environment under which it is running assigns it a name.
+
+If you want the script filename, use:
+----------
+#!/usr/bin/env groovy
+ 
+def program = getClass().protectionDomain.codeSource.location.path
+ 
+println "Program: " + program
+----------
+
+But if you just want the class name, there are easier ways.
+
+So, just typing in and running the following in the GroovyConsole environment:
+----------
+println this.class.getName()
+----------
+
+yields the following on the first run:
+----------
+ConsoleScript0
+----------
+
+and the following on the third run:
+----------
+ConsoleScript2
+----------
+
+But if we save this one line script under the filename "Autonomous.groovy" and then load the file
+into the console, we get this on every run:
+----------
+Autonomous
+----------
+
+Using the package statement and an appropriate directory hierarchy to provide namespace semantics
+works exactly as it does in Java.
