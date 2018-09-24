@@ -1,37 +1,21 @@
-def stack = []
-assert stack.empty
+// Solution:
+
+def rawTrace = { Thread.currentThread().stackTrace }
+
+
+// Test: (demonstrates, among other things, continued execution after generating stack trace)
+
+def trace = rawTrace().collect {
+    def props = it.properties
+    def keys = (it.properties.keySet() - (new Object().properties.keySet()))
+    props.findAll{ k, v -> k in keys }
+}
  
-stack.push(55)
-stack.push(21)
-stack.push('kittens')
-assert stack.last() == 'kittens'
-assert stack.size() == 3
-assert ! stack.empty
+def propNames = trace[0].keySet().sort()
+def propWidths = propNames.collect { name -> [name, trace.collect{ it[name].toString() }].flatten()*.size().max() }
  
-println stack
- 
-assert stack.pop() == "kittens"
-assert stack.size() == 2
- 
-println stack
- 
-stack.push(-20)
- 
-println stack
- 
-stack.push( stack.pop() * stack.pop() )
-assert stack.last() == -420
-assert stack.size() == 2
- 
-println stack
- 
-stack.push(stack.pop() / stack.pop())
-assert stack.size() == 1
- 
-println stack
- 
-println stack.pop()
-assert stack.size() == 0
-assert stack.empty
- 
-try { stack.pop() } catch (NoSuchElementException e) { println e.message }
+propNames.eachWithIndex{ name, i -> printf("%-${propWidths[i]}s  ", name) }; println ''
+propWidths.each{ width -> print('-' * width + '  ') }; println ''
+trace.each {
+    propNames.eachWithIndex{ name, i -> printf("%-${propWidths[i]}s  ", it[name].toString()) }; println ''
+}

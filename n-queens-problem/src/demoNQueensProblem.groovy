@@ -1,4 +1,5 @@
 // Distinct Solutions
+
 // This solver starts with the N! distinct solutions to the N-Rooks problem and then keeps only
 // the candidates in which all Queens are mutually diagonal-safe.
 
@@ -29,6 +30,7 @@ def queensDistinctSolutions = { n ->
 
 
 // Unique Solutions
+
 // Unique solutions are equivalence classes of distinct solutions, factoring out all reflections
 // and rotations of a given solution. See the Wikipedia page for more details.
 
