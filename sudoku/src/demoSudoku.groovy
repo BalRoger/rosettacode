@@ -33,8 +33,8 @@ def assignCandidates = { grid, slots = slotList(grid) ->
         def unavailable = [gridRow, gridCol, gridBox].collect { it(grid, slot) }.sum() as Set
         slot.candidates = CELL_VALUES - unavailable
     }
-    slots.sort { - it.candidates.size() }
-    if (slots && ! slots[-1].candidates) {
+    slots.sort { it.candidates.size() }
+    if (slots && ! slots[0].candidates) {
         throw new GridException('Invalid Sudoku Grid, overdetermined slot: ' + slots[-1])
     }
     slots
@@ -46,7 +46,7 @@ def solve
 solve = { grid ->
     def slots = assignCandidates(grid)
     if (! slots) { return grid }
-    while (slots[-1].candidates.size() == 1) {
+    while (slots[0].candidates.size() == 1) {
         def slot = slots.pop()
         grid[slot.i][slot.j] = slot.candidates[0]
         if (! slots) { return grid }
@@ -118,7 +118,7 @@ def sudokus = [
   //1st "exceptionally difficult" example in Wikipedia: ~ 6.5 seconds
     '12.4..3..3...1..5...6...1..7...9.....4.6.3.....3..2...5...8.7....7.....5.......98',
  
-  //Used in Bracmat and Scala solutions:                ~ 6.7 seconds
+  //Used in Bracmat, Phix, and Scala solutions:         ~ 6.7 seconds
     '..............3.85..1.2.......5.7.....4...1...9.......5......73..2.1........4...9',
  
   //2nd "exceptionally difficult" example in Wikipedia: ~ 8.8 seconds
@@ -128,7 +128,17 @@ def sudokus = [
     '....839..1......3...4....7..42.3....6.......4....7..1..2........8...92.....25...6',
  
   //4th "exceptionally difficult" example in Wikipedia: ~29   seconds
-    '..3......4...8..36..8...1...4..6..73...9..........2..5..4.7..686........7..6..5..']
+    '..3......4...8..36..8...1...4..6..73...9..........2..5..4.7..686........7..6..5..',
+
+//  //Used in Phix solution (#2):                         ~98   seconds
+//    '.......3684..............2....2.3....1....7.....6..4.....41..5...3...2..6........',
+
+  //Used in Phix solution (#4):                         ~ 2.6 seconds
+    '....376.....6...9...8.....4.9......16.......93......4.7.....8...1...9.....254....',
+
+  //Used in Phix solution (#10):                        ~ 2.6 seconds
+    '..4.5..6..6.1..8.93....7....8....5.....4.3.....6....7....2....61.5..4.3..2..7.1..'
+]
  
 sudokus.each { sudoku ->
     def grid = string2grid(sudoku)
