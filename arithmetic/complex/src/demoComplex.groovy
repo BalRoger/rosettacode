@@ -61,7 +61,7 @@ def n = 3
 def θ = π / n
 
 def fromPolar1 = ρ.cis(θ)           // direct polar-to-cartesian conversion, fluent "operator"
-def fromPolar2 = ρ.∠(θ)             // direct polar-to-cartesian conversion, fluent "operator"
+def fromPolar2 = ρ."∠"(θ)             // direct polar-to-cartesian conversion, fluent "operator"
 def fromPolar3 = fromPolar(ρ, θ)    // direct polar-to-cartesian conversion
 def fromPolar4 = exp(θ.i) * ρ       // Euler's equation
 println "ρ cis θ               == ${ρ}*cos(π/${n}) + i*${ρ}*sin(π/${n})"

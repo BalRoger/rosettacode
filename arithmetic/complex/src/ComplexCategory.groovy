@@ -9,11 +9,11 @@ class ComplexCategory {
    static Complex div (Number a, Complex b) { ([a] as Complex) / b  }
    static Complex power (Number a, Complex b) { ([a] as Complex) ** b }
    static Complex cis(Number ρ, Number θ) { Complex.fromPolar(ρ, θ) }
-   static Complex ∠(Number ρ, Number θ) { Complex.fromPolar(ρ, θ) }
+   static Complex "∠"(Number ρ, Number θ) { Complex.fromPolar(ρ, θ) }
 
    static <T> T asType (Number a, Class<T> type) {
-       type == Complex \
-           ? [a] as Complex
-           : DefaultGroovyMethods.asType(a, type)
+      ( type == Complex
+           ? ([a] as Complex)
+           : DefaultGroovyMethods.asType(a, type) as T)
    }
 }

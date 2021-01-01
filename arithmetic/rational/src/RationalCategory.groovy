@@ -7,8 +7,8 @@ class RationalCategory {
    static Rational div (Number a, Rational b) { ([a] as Rational) / b  }
 
    static <T> T asType (Number a, Class<T> type) {
-       type == Rational \
-           ? [a] as Rational
-               : DefaultGroovyMethods.asType(a, type)
+       ( type == Rational
+           ? ([a] as Rational)
+               : DefaultGroovyMethods.asType(a, type) )
    }
 }

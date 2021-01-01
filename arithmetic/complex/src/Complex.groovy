@@ -26,7 +26,7 @@ class Complex {
     /** the conjugate */
     Complex conjugate () { this.conjugate }
     /** the conjugate */
-    static Number conjugate(Complex c) { c.conjugate }
+    static Complex conjugate(Complex c) { c.conjugate }
     /** the conjugate. Overloads the bitwise complement (~) operator. */
     Complex bitwiseNegate () { this.conjugate }
 
@@ -91,7 +91,7 @@ class Complex {
 
     Complex power(Complex c) {
         ( this == 0 && c != 0
-                ?  [0] as Complex
+                ?  ([0] as Complex)
                 :  c == 1
                         ?  this
                         :  exp( log(this) * c ) )
@@ -100,9 +100,9 @@ class Complex {
     Complex power(Number n) { this ** ([n] as Complex) }
 
     boolean equals(that) {
-        that != null && (that instanceof Complex
-                                ? [this.real, this.imag] == [that.real, that.imag]
-                                : that instanceof Number && [this.real, this.imag] == [that, 0])
+        ( that != null && (that instanceof Complex
+                ? [this.real, this.imag] == [that.real, that.imag]
+                : that instanceof Number && [this.real, this.imag] == [that, 0]) )
     }
 
     int hashCode() { [real, imag].hashCode() }
